@@ -1,8 +1,10 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const errorHandler = require("./handlers/error")
+const errorHandler = require("./handlers/error");
+const authRoutes = require("./routs/auth");
 
 const PORT = 8081
 
@@ -10,9 +12,7 @@ const PORT = 8081
 app.use(cors());
 app.use(bodyParser.json());
 
-app.get("/", function(req, res) {
-  res.send("this is from route route")
-});
+app.use("/api/auth", authRoutes)
 
 app.use(function(req, res, next){
   let err = new Error("Not Found");

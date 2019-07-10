@@ -3,5 +3,8 @@ mongoose.set("debug", true);
 mongoose.Promise = Promise;
 
 mongoose.connect("mongodb://localhosttwitter", {
-  keepAlive: true
+  keepAlive: true,
+  useNewUrlParser: true
 });
+
+module.exports.User = require("./user");
