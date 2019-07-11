@@ -4,6 +4,6 @@ function errorHandler(error, request, response, next) {
       message: error.message || "Oops! Something went wrong."
     }
   });
-};
+}
 
-module.exports = errorHandler
+module.exports = errorHandler;
