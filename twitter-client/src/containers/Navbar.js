@@ -15,7 +15,7 @@ class Navbar extends Component {
           </div>
           <ul className="nav navbar-nav navbar-right">
             <li>
-              <Link to="/signup">SignUp</Link>
+              <Link to="/signup">Sign Up</Link>
             </li>
             <li>
               <Link to="/signin">Log in</Link>
