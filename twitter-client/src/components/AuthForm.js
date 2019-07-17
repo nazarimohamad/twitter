@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+
 export default class AuthForm extends Component {
   constructor(props){
     super(props);
@@ -21,20 +22,34 @@ export default class AuthForm extends Component {
  handleSubmite = e => {
    e.preventDefault();
   const authType = this.props.signUp ? "signup" : "signin"
-  this.props.onAuth(authType, this.state).then(() => {
-    console.log("logged in page")
-  });
+  this.props.onAuth(authType, this.state)
+    .then(() => {
+    this.props.history.push("/");
+  })
+    .catch(() => {
+      return;
+    });
+
  };
 
   render() {
     const { email, username, profileImageUrl } = this.state;
-    const { buttonText, heading, signUp } = this.props
+    const { buttonText, heading, signUp, errors, history, removeError } = this.props
+
+    history.listen(() => {
+      removeError();
+    });
+
     return (
       <div>
         <div className="row justify-content-md-center text-center">
           <div className="col-md-6">
             <form onSubmit={this.handleSubmite}>
               <h2>{heading}</h2>
+              {errors.message &&
+                <div className="alert alert-danger">
+                  {errors.message}
+                </div>}
               <lable htmlFor="email">Email:</lable>
               <input
                 className="form-control"
