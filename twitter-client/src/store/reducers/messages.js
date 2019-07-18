@@ -1,9 +1,9 @@
-import { LOAD_MESSAGES, REMOVE_MESSAGES } from "../actionTypes";
+import { LOAD_MESSAGES, REMOVE_MESSAGE } from "../actionTypes";
 
-const message = (state=[], action) => {
+const message = (state = [], action) => {
   switch (action.type) {
     case LOAD_MESSAGES:
-      return { ...state.messages};
+      return [...action.messages];
     default:
       return state;
   }

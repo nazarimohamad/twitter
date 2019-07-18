@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 
-
 export default class AuthForm extends Component {
   constructor(props){
     super(props);
@@ -9,7 +8,7 @@ export default class AuthForm extends Component {
       username: "",
       password: "",
       profileImageUrl: ""
-    }
+    };
   }
 
  handleChange = (e) => {
@@ -22,7 +21,8 @@ export default class AuthForm extends Component {
  handleSubmite = e => {
    e.preventDefault();
   const authType = this.props.signUp ? "signup" : "signin"
-  this.props.onAuth(authType, this.state)
+  this.props
+    .onAuth(authType, this.state)
     .then(() => {
     this.props.history.push("/");
   })
@@ -33,7 +33,7 @@ export default class AuthForm extends Component {
  };
 
   render() {
-    const { email, username, profileImageUrl } = this.state;
+    const { email, username, password, profileImageUrl } = this.state;
     const { buttonText, heading, signUp, errors, history, removeError } = this.props
 
     history.listen(() => {
@@ -66,6 +66,7 @@ export default class AuthForm extends Component {
                 name="password"
                 onChange={this.handleChange}
                 type="password"
+                value={password}
               />
               {signUp && (
                 <div>
