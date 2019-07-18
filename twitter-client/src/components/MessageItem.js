@@ -28,6 +28,11 @@ const MessageItem = ({
           </Moment>
         </span>
         <p>{text}</p>
+        {isCorrectUser && (
+           <button className="btn btn-danger" onClick={removeMessage}>
+           Delete
+         </button>
+        )}
       </div>
     </li>
   </div>
